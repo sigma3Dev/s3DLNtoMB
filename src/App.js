@@ -64,7 +64,7 @@ const ImportFromFileBodyComponent = () => {
     const handleFileRead = (e) => {
         const content = fileReader.result;
         console.log(content);
-        alert(`Selected file - ${content}`);
+        alert(`Selected file - ${LNtoMB(content)}`);
         return(
             content
           );
@@ -87,7 +87,16 @@ const ImportFromFileBodyComponent = () => {
     </div>;
 };
 
+function LNtoMB(lnText) {
+  var lnArrayTotal = lnText.split("\n");
+  var lnArray = Array();
+  for (let i=18; i<lnArrayTotal.length; i++) {
+    var line = lnArrayTotal[i].split("\t");
+    lnArray[i-18] = line;
+  }
+  return(lnArray.toString());
 
+}
 
 
 // function handleFileSelect(evt) {
